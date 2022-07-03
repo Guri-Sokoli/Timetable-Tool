@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Detyrat/.idea/Detyrat.iml" filepath="$PROJECT_DIR$/../Detyrat/.idea/Detyrat.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Python Projects.iml" filepath="$PROJECT_DIR$/.idea/Python Projects.iml" />
     </modules>
   </component>

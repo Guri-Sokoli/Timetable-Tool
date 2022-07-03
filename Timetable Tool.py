@@ -62,16 +62,36 @@ class Courses():
         self.CrsLbx.bind('<Double-1>')
 # C:\\Users\\PC\\Downloads\\sampledata (1).csv
     def enter_file_dir(self):
+        classes_and_years = []
+        with open('sampledata (1).csv', mode='r') as file:
+            sd = csv.reader(file)
+            for row in sd:
+                entry = row[0].split(' ')
+                class_name = entry[0] # shkurtesa e klasave
+                class_year = int(entry[1][0][0]) # numri i par o vitet
+                classes_and_years.append({'year': class_year,'name': row[0], 'fullname': row[1]})
+
+
         filepath = self.PathEntry.get()
         year = self.YrBox.get()
         department = self.DpEntry.get()
         if year=='' or department=='':
             print('kah je nis')
         else:
-            with open('sampledata (1).csv', mode='r') as file:
-                sd = csv.reader(file)
-                for lines in sd:
-                    self.CrsLbx.insert(END, lines)
+            found = []
+            for obj in classes_and_years:
+                if int(year) == obj['year'] and obj['name'].startswith(department):
+                    found.append(obj)
+                    self.CrsLbx.insert(END, obj['name'] + ' ' + obj['fullname'])
+            print(found)
+
+        #else:
+        #    with open('sampledata (1).csv', mode='r') as file:
+        #        sd = csv.reader(file)
+        #        for lines in sd:
+        #            self.CrsLbx.insert(END, lines)
+
+
 
     def enter_year(self):
         year = self.YrBox.get()
